@@ -1,0 +1,67 @@
+
+	header {
+		text-align: center;
+		height: 50px;
+	}
+
+	h1 {
+		border-bottom: 2px solid;
+		line-height: 50px;
+	}
+
+	.player-selection {
+
+		margin-top: 50px;
+		height: 100px;
+		text-align: center;
+	}
+
+	#player #enemy {
+
+		margin-top: 50px;
+		height: 100px;
+		text-align: center;
+	}
+
+	#player #enemy #attackbutton {
+		display: inline-block;
+	}
+
+	#char1 {
+		width: 150px;
+		height: 100px;
+		background-image: url(assets/images/superman.png);
+		margin-left: 50px;
+		display: inline-block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		border-width: 5px;
+		cursor: pointer;
+	}
+
+		
+	#char2 {
+
+		width: 150px;
+		height: 100px;
+		background-image: url(assets/images/green-lantern.png);
+		margin-left: 25px;
+		display: inline-block;
+		background-size: contain;
+		background-repeat: no-repeat;
+		border-width: 5px;
+		cursor: pointer;
+	}
+
+	#player {
+		width: 400px
+		height: 400px;
+
+	}	
+
+	#enemy {
+		width: 400px
+		height: 400px;
+
+	}		
+	
