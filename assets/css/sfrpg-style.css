@@ -17,14 +17,19 @@
 
 
     #wrapper {
-      height: 70%;
+      /*height: calc(100%-150px);*/
       width: 100%;
       margin: 0;
       background-image: url("../images/Suzaku_Temple.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center bottom;
-      position: relative;
+      /*position: relative;*/
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 150px;
       
     }
 
@@ -44,8 +49,12 @@
         background-image: url("../images/wood.jpg");
         text-align: center;
         width: 100%;
-        height: 30%;
-        vertical-align: middle;
+        height: 150px;
+        /*vertical-align: middle;*/
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
     }
 
     #availChars {
@@ -71,7 +80,7 @@
         height: 200px;
         width: 100px;
         background-color: white;
-        padding-top: 20px;
+        
 
     }
 
@@ -84,9 +93,29 @@
         height: 200px;
         width: 100px;
         background-color: white;
-        padding-top: 20px;
+       
 
     }
+
+    #fightArea {
+      position: fixed;
+      height: 150px;
+      bottom: 230px;
+      left: 0;
+      right: 0;
+      border: 2px solid red;
+    }
+
+
+/*
+  .enemy img{
+      -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}*/    
 
 	.message {
 		position: fixed;
