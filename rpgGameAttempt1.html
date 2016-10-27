@@ -41,6 +41,7 @@
         <div class="message">
             <div class="row1">
                 <div class="col1">
+                    <p id="gameMessage"></p>
                     
                 </div>
             </div>
@@ -67,8 +68,11 @@
     <nav class="navbar navbar-default navbar-fixed-bottom availCharacters">
        <div class="container">
           <div class="row1">
-            <div class="col1">
+            <div class="col1 col-sm-10">
                 <div id="availChars"></div>
+            </div>
+            <div class="col2 col-sm-2" id="newGameCol">
+              <button id="newGame">New Game</button>
             </div>
         </div>
       </div>
@@ -108,9 +112,9 @@ ryu.style.backgroundRepeat = "no-repeat";
 ryu.style.backgroundColor = "white";
 ryu.style.backgroundPosition = "center"; 
 ryu.name = "ryu";
-ryu.healthPoints = 125;
-ryu.attackPoints = 30;
-ryu.attackPointsInc = 10;
+ryu.healthPoints = 100;
+ryu.attackPoints = 10;
+ryu.attackPointsInc = 15;
 ryu.isPlayer = null;
 ryu.isEnemy = null;
 console.log(ryu);
@@ -130,8 +134,8 @@ ken.style.backgroundColor = "white";
 ken.style.backgroundPosition = "center"; 
 ken.name = "ken";
 ken.healthPoints = 125;
-ken.attackPoints = 30;
-ken.attackPointsInc = 10;
+ken.attackPoints = 40;
+ken.attackPointsInc = 5;
 ken.isPlayer = null;
 ken.isEnemy = null;
 console.log(ken);
@@ -150,8 +154,8 @@ sagat.style.backgroundRepeat = "no-repeat";
 sagat.style.backgroundColor = "white";
 sagat.style.backgroundPosition = "center"; 
 sagat.name = "sagat";
-sagat.healthPoints = 125;
-sagat.attackPoints = 30;
+sagat.healthPoints = 180;
+sagat.attackPoints = 25;
 sagat.attackPointsInc = 10;
 sagat.isPlayer = null;
 sagat.isEnemy = null;
@@ -168,7 +172,7 @@ mbison.style.backgroundImage = "url('assets/images/mbison.png')";
 mbison.style.backgroundSize = "cover";
 mbison.style.backgroundPosition = "center"; 
 mbison.name = "m. bison";
-mbison.healthPoints = 125;
+mbison.healthPoints = 200;
 mbison.attackPoints = 30;
 mbison.attackPointsInc = 10;
 mbison.isPlayer = null;
@@ -184,44 +188,48 @@ var game = {
   enemyList: [],
   playerList: [],
   currentPlayer: null,
-  currentEnemy: null,
+  activeEnemy: null,
+  startGame: function() {
 
+      //The below insets and displays the DOM Element button character object in the div.id "availChars"
+      document.getElementById("availChars").appendChild( ryu );
+      document.getElementById("availChars").appendChild( ken );
+      document.getElementById("availChars").appendChild( sagat );
+      document.getElementById("availChars").appendChild( mbison );
+
+      //game button display settings
+      document.getElementById("attack").style.visibility = "hidden";
+      document.getElementById("newGame").style.visibility = "visible";
+
+      //default start settings
+      game.playerSelected = false;
+      game.enemySelected = false;
+      game.availableCharacters = ["ryu", "ken", "sagat", "mbison"];
+      game.enemyList = [],
+      game.playerList = [],
+      game.currentPlayer = null;
+      game.activeEnemy = null;
+
+
+      console.log("This is the array of available characters: " +  game.availableCharacters);
+      },
 };
 
 
-//Function==================
 
-function startGame() {
-
-
-  //The below insets and displays the DOM Element button character object in the div.id "availChars"
-  document.getElementById("availChars").appendChild( ryu );
-  document.getElementById("availChars").appendChild( ken );
-  document.getElementById("availChars").appendChild( sagat );
-  document.getElementById("availChars").appendChild( mbison );
-
-  //default start settings
-  game.playerSelected = false;
-  game.enemySelected = false;
-  game.availableCharacters = ["ryu", "ken", "sagat", "mbison"];
-  game.enemyList = [],
-  game.playerList = [],
-  game.currentPlayer = null;
-  game.currentEnemy = null;
-
-
-  console.log("This is the array of available characters: " +  game.availableCharacters);
-
-};
 
 
 
 //Logic===============================================
 
-startGame();
+game.startGame();
 
 
+$("#newGame").click(function() {
 
+  game.startGame();
+
+});  
 
 $("#ryu").click(function() {
    if (game.playerSelected === false) {
@@ -239,7 +247,7 @@ $("#ryu").click(function() {
       });
 
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-
+      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -258,6 +266,7 @@ $("#ryu").click(function() {
             };
         });
 
+        console.log("This is the selected enemy's hp: " +  game.activeEnemy.healthPoints);
         console.log("This is the updated array of available characters: " +  game.availableCharacters);
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
@@ -286,7 +295,7 @@ $("#ken").click(function() {
       });
 
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-
+       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -305,6 +314,7 @@ $("#ken").click(function() {
             };
         });
 
+        console.log("This is the selected enemy's hp: " +  game.activeEnemy.healthPoints);
         console.log("This is the updated array of available characters: " +  game.availableCharacters);
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
@@ -333,7 +343,7 @@ $("#sagat").click(function() {
       });
 
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-
+       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -352,6 +362,7 @@ $("#sagat").click(function() {
             };
         });
 
+        console.log("This is the selected enemy's hp: " +  game.activeEnemy.healthPoints);
         console.log("This is the updated array of available characters: " +  game.availableCharacters);
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
@@ -363,6 +374,7 @@ $("#sagat").click(function() {
   
   
 });
+
 
 $("#mbison").click(function() {
    if (game.playerSelected === false) {
@@ -381,7 +393,7 @@ $("#mbison").click(function() {
 
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
 
-
+      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
 
@@ -399,6 +411,7 @@ $("#mbison").click(function() {
             };
         });
 
+        console.log("This is the selected enemy's hp: " +  game.activeEnemy.healthPoints);
         console.log("This is the updated array of available characters: " +  game.availableCharacters);
         console.log("This is the updated enemy list array: " +  game.enemyList);
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
@@ -413,27 +426,56 @@ $("#mbison").click(function() {
 });
 
 
-// $("#attack").click(function() {
+$("#attack").click(function() {
 
-//   //reduce player hp by enemy attack points
-//   game.currentPlayer.healthPoints = game.currentPlayer.healthPoints - game.currentEnemy.attackPoints
-//   //reduce enemy hp by player attack points
-//   game.currentEnemy.healthPoints = game.currentPlayer.healthPoints - game.currentEnemy.attackPoints
-//   //increase player attack points by attack points increment
-//   game.currentPlayer.attackPoints = game.currentPlayer.attackPoints + game.currentPlayer.attackPointsInc 
+  //reduce player hp by enemy attack points
+  game.currentPlayer.healthPoints = game.currentPlayer.healthPoints - game.activeEnemy.attackPoints
+  //reduce enemy hp by player attack points
+  game.activeEnemy.healthPoints = game.activeEnemy.healthPoints - game.currentPlayer.attackPoints
+  //increase player attack points by attack points increment
+  game.currentPlayer.attackPoints = game.currentPlayer.attackPoints + game.currentPlayer.attackPointsInc 
 
-//   console.log("This is the player's hp: " + game.currentPlayer.healthPoints);
-//   console.log("This is the enemy's hp: " + game.currentEnemy.healthPoints);
-//   console.log("This is the player's new ap: " + game.currentPlayer.attackPoints);
+  console.log("This is the player's hp: " + game.currentPlayer.healthPoints);
+  console.log("This is the enemy's hp: " + game.activeEnemy.healthPoints);
+  console.log("This is the player's new ap: " + game.currentPlayer.attackPoints);
 
-//    if (game.currentPlayer.healthPoints > 0 && game.currentEnemy.healthPoints <= 0) {
-//       alert("you win this round")
-//   };
+    //if enemy hp is less than or equal to 0 player wins
+    if (game.activeEnemy.healthPoints <= 0) {
+      $( "#gameMessage" ).html("You win this round");
 
-//   if (game.currentEnemy.healthPoints) {
-      
-//   }
+      //hide the attack button
+      document.getElementById("attack").style.visibility = "hidden";
 
+      //Clears the losing enemy player button object from the active enemy div
+      $( "#activeEnemy" ).empty();
+    
+           //check available characters array to see if there are any more opponents left
+        if (game.availableCharacters.length > 0) { 
+
+          game.enemySelected = false;
+          
+          
+          
+         
+
+
+
+          $( "#gameMessage" ).html("Select next opponent");
+        };
+
+        //if no more opponents left then player wins the game
+        if (game.availableCharacters.length <= 0) {
+          $( "#gameMessage" ).html("Congrats! You win!");
+        };
+
+    };
+               
+    //if player hp is less or equal to zero and the enemy still has hp then player loses
+    if (game.currentPlayer.healthPoints <=0 && game.activeEnemy.healthPoints > 0) {
+        $( "#gameMessage" ).html("You lose. Try again");
+        document.getElementById("newGame").style.visibility = "visible";
+    };
+});
 
 </script>
 
