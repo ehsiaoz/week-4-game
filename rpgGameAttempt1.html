@@ -4,148 +4,53 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/sfrpg-style.css">
     <script
     src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
-
-    <style type="text/css">
-
-     
-     body {
-      margin: 0;
-
-     }
-
-
-    #wrapper {
-      background-image: url(assets/images/Suzaku_Temple.png);
-      background-size: cover;
-      background-position: bottom;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      
-    }
-
-
-    /*.background {
-      background-image: url();
-      width: 100%;
-      height: auto;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;      
-     
-    }*/
-
-
-    .availCharacters {
-        background-image: url("assets/images/wood.jpg");
-        text-align: center;
-        width: 100%;
-    }
-
-    .charButton {
-
-      width: 200px;
-      height: 300px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-color: white;
-      background-position: center;
-
-    }
-
-     .player {
-
-        position: absolute;
-        top: 200px;
-        left: 30%;
-        height: 200px;
-        width: 100px;
-        background-color: white;
-        padding-top: 20px;
-
-    }
-
-
-    .enemy {
-
-        position: absolute;
-        top: 200px;
-        left: 60%;
-        height: 200px;
-        width: 100px;
-        background-color: white;
-        padding-top: 20px;
-
-    }
-
-
-
-    #attack {
-      position: absolute;
-        top: 200px;
-        left: 32%;
-      background-color: grey;
-      margin-left: 200px;
-      margin-top: 100px;
-      /*visibility: hidden;*/
-    }
-
-
-    </style>
-    
-
 </head>
+
 <body>
-    
 
-    <div class="jumbotron" id="wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-
-                  <div class="enemyCharacters">
-                      <div class="row1">
-                          <div class="col1">
-                              <div class="enemyChars"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="player">
-                      <div class="row1">
-                          <div class="col1">
-                              <div id="activePlayer"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="enemy">
-                      <div class="row1">
-                          <div class="col1">
-                              <div id="activeEnemy"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="attack">
-                      <div class="row1">
-                          <div class="col1">
-                              <button id="attack">Attack</button>
-                          </div>
-                      </div>
-                  </div>
+    <!-- This wrapper div contains the background image -->
+    <div id="wrapper">
 
 
-          </div>
+        <!-- This div contains the active character that the player chooses -->
+        <div class="player">
+            <div class="row1">
+                <div class="col1">
+                    <div id="activePlayer"></div>
+                </div>
+            </div>
         </div>
-      </div>
-   </div>
+
+       
+        <!-- This div contains the active enemy character selected by the player -->
+        <div class="enemy">
+            <div class="row1">
+                <div class="col1">
+                    <div id="activeEnemy"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- This div contains the messaging and attack button -->
+        <div class="attack">
+            <div class="row1">
+                <div class="col1">
+                    <button id="attack">Attack</button>
+                </div>
+            </div>
+        </div>
 
 
 
+    </div>  
+
+
+    <!-- This section contains the all of the characters that the player can select from -->
     <nav class="navbar navbar-default navbar-fixed-bottom">
        <div class="container availCharacters">
           <div class="row1">
@@ -157,19 +62,25 @@
     </nav>
    
         
-    
-
   
-
-
 
 
 
 <script type="text/javascript">
 
 
+//Function==================
 
-//Functions=================
+function startGame() {
+
+
+//The below insets and displays the DOM Element button character object in the div.id "availChars"
+document.getElementById("availChars").appendChild( ryu );
+document.getElementById("availChars").appendChild( ken );
+document.getElementById("availChars").appendChild( sagat );
+document.getElementById("availChars").appendChild( mbison );
+
+};
 
 //Objects==================
 
@@ -183,6 +94,7 @@
 // };
 
 
+//Creates ryu character object and associates it with a physical DOM Element button
 var ryu = document.createElement('button');
 ryu.id = "ryu";
 ryu.style.margin = "0px 15px";
@@ -201,9 +113,9 @@ ryu.isPlayer = null;
 ryu.isEnemy = null;
 console.log(ryu);
 
-document.getElementById("availChars").appendChild( ryu );
 
 
+//Creates ken character object and associates it with a physical DOM Element button
 var ken = document.createElement('button');
 ken.id = "ken";
 ken.style.margin = "0px 15px";
@@ -222,9 +134,9 @@ ken.isPlayer = null;
 ken.isEnemy = null;
 console.log(ken);
 
-document.getElementById("availChars").appendChild( ken );
 
 
+//Creates sagat character object and associates it with a physical DOM Element button
 var sagat = document.createElement('button');
 sagat.id = "sagat";
 sagat.style.margin = "0px 15px";
@@ -243,8 +155,8 @@ sagat.isPlayer = null;
 sagat.isEnemy = null;
 console.log(sagat);
 
-document.getElementById("availChars").appendChild( sagat );
 
+//Creates m.bison character object and associates it with a physical DOM Element button
 var mbison = document.createElement('button');
 mbison.id = "mbison";
 mbison.style.margin = "0px 15px";
@@ -261,7 +173,7 @@ mbison.isPlayer = null;
 mbison.isEnemy = null;
 console.log(mbison);
 
-document.getElementById("availChars").appendChild( mbison );
+
 
 
 var game = {
