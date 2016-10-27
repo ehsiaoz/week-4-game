@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script
     src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -11,53 +10,39 @@
 
     <style type="text/css">
 
-     
-     body {
+    html {
+      height: 100%;
+      width: 100%;
       margin: 0;
 
-     }
-
-
-    #wrapper {
-      background-image: url(assets/images/Suzaku_Temple.png);
-      background-size: cover;
-      background-position: bottom;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      
     }
 
-
-    /*.background {
-      background-image: url();
+    body {
+      height: 100%;
       width: 100%;
-      height: auto;
+      margin: 0;
+      background-image: url("assets/images/Suzaku_Temple.png");
+      background-size: cover;
       background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;      
-     
-    }*/
-
-
+      background-position: center bottom;
+      position: relative;
+    }
     .availCharacters {
         background-image: url("assets/images/wood.jpg");
         text-align: center;
+        position: fixed;
+        bottom: 0;
         width: 100%;
     }
-
     .charButton {
-
       width: 200px;
       height: 300px;
       background-size: contain;
       background-repeat: no-repeat;
       background-color: white;
       background-position: center;
-
     }
-
      .player {
-
         position: absolute;
         top: 200px;
         left: 30%;
@@ -65,12 +50,8 @@
         width: 100px;
         background-color: white;
         padding-top: 20px;
-
     }
-
-
     .enemy {
-
         position: absolute;
         top: 200px;
         left: 60%;
@@ -78,11 +59,7 @@
         width: 100px;
         background-color: white;
         padding-top: 20px;
-
     }
-
-
-
     #attack {
       position: absolute;
         top: 200px;
@@ -92,8 +69,6 @@
       margin-top: 100px;
       /*visibility: hidden;*/
     }
-
-
     </style>
     
 
@@ -101,79 +76,57 @@
 <body>
     
 
-    <div class="jumbotron" id="wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-
-                  <div class="enemyCharacters">
-                      <div class="row1">
-                          <div class="col1">
-                              <div class="enemyChars"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="player">
-                      <div class="row1">
-                          <div class="col1">
-                              <div id="activePlayer"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="enemy">
-                      <div class="row1">
-                          <div class="col1">
-                              <div id="activeEnemy"></div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="attack">
-                      <div class="row1">
-                          <div class="col1">
-                              <button id="attack">Attack</button>
-                          </div>
-                      </div>
-                  </div>
-
-
-          </div>
-        </div>
-      </div>
-   </div>
-
-
-
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-       <div class="container availCharacters">
-          <div class="row1">
+    <div class="availCharacters">
+        <div class="row1">
             <div class="col1">
                 <div id="availChars"></div>
             </div>
         </div>
-      </div>
-    </nav>
-   
-        
-    
+    </div>
 
-  
+    <div class="enemyCharacters">
+        <div class="row1">
+            <div class="col1">
+                <div class="enemyChars"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <div class="row1">
+            <div class="col1">
+                <div id="activePlayer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="enemy">
+        <div class="row1">
+            <div class="col1">
+                <div id="activeEnemy"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="attack">
+        <div class="row1">
+            <div class="col1">
+                <button id="attack">Attack</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 
 
 
 <script type="text/javascript">
-
-
-
 //Functions=================
-
 //Objects==================
-
-
 //Constructor function to create character objects
 // function character(name="default", healthPoints=100, attackPoints=25, attackPointsInc=1) {
 //     this.name = name;
@@ -181,8 +134,6 @@
 //     this.attackPoints = attackPoints;
 //     this.attackPointsInc = attackPointsInc;
 // };
-
-
 var ryu = document.createElement('button');
 ryu.id = "ryu";
 ryu.style.margin = "0px 15px";
@@ -200,10 +151,7 @@ ryu.attackPointsInc = 10;
 ryu.isPlayer = null;
 ryu.isEnemy = null;
 console.log(ryu);
-
 document.getElementById("availChars").appendChild( ryu );
-
-
 var ken = document.createElement('button');
 ken.id = "ken";
 ken.style.margin = "0px 15px";
@@ -221,10 +169,7 @@ ken.attackPointsInc = 10;
 ken.isPlayer = null;
 ken.isEnemy = null;
 console.log(ken);
-
 document.getElementById("availChars").appendChild( ken );
-
-
 var sagat = document.createElement('button');
 sagat.id = "sagat";
 sagat.style.margin = "0px 15px";
@@ -242,9 +187,7 @@ sagat.attackPointsInc = 10;
 sagat.isPlayer = null;
 sagat.isEnemy = null;
 console.log(sagat);
-
 document.getElementById("availChars").appendChild( sagat );
-
 var mbison = document.createElement('button');
 mbison.id = "mbison";
 mbison.style.margin = "0px 15px";
@@ -260,24 +203,18 @@ mbison.attackPointsInc = 10;
 mbison.isPlayer = null;
 mbison.isEnemy = null;
 console.log(mbison);
-
 document.getElementById("availChars").appendChild( mbison );
-
-
 var game = {
-
   playerSelected:false,
   enemySelected:false,
   availableCharacters: [],
   enemyList: [],
   currentPlayer: null,
   currentEnemy: null,
-
 };
 
 
 //Logic===============================================
-
 $("#ryu").click(function() {
    if (game.playerSelected === false) {
       game.playerSelected = true;
@@ -286,7 +223,6 @@ $("#ryu").click(function() {
       $("#activePlayer").append(ryu);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   };
-
   if (game.playerSelected === true && game.enemySelected === false && this.isPlayer !== true) {
       ryu.isEnemy = true;
       game.activeEnemy = ryu;
@@ -294,7 +230,6 @@ $("#ryu").click(function() {
       $("#activeEnemy").append(ryu);
       console.log("The current enemy @ end is: " + game.currentEnemy.name);
   }
-
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("ryu player status: " + ryu.isPlayer);
@@ -302,6 +237,7 @@ $("#ryu").click(function() {
   
   
 });
+
 
 $("#ken").click(function() {
    if (game.playerSelected === false) {
@@ -311,7 +247,6 @@ $("#ken").click(function() {
       $("#activePlayer").append(ken);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   };
-
   if (game.playerSelected === true && game.enemySelected === false && this.isPlayer !== true) {
       ken.isEnemy = true;
       game.currentEnemy = ken;
@@ -321,7 +256,6 @@ $("#ken").click(function() {
       console.log("The current enemy @ end is: " + game.currentEnemy.name);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   }
-
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("ken player status: " + ken.isPlayer);
@@ -329,6 +263,8 @@ $("#ken").click(function() {
   
   
 });
+
+
 
 $("#sagat").click(function() {
   if (game.playerSelected === false) {
@@ -339,6 +275,7 @@ $("#sagat").click(function() {
       console.log("The current player @ end is: " + game.currentPlayer.name);
   };
 
+
   if (game.playerSelected === true && game.enemySelected === false && this.isPlayer !== true) {
       sagat.isEnemy = true;
       game.currentEnemy = sagat;
@@ -347,12 +284,12 @@ $("#sagat").click(function() {
       console.log("The current enemy @ end is: " + game.currentEnemy.name);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   }
-
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("sagat player status: " + sagat.isPlayer);
   console.log("sagat enemy status: " + sagat.isEnemy);
 });
+
 
 $("#mbison").click(function() {
  if (game.playerSelected === false) {
@@ -362,7 +299,6 @@ $("#mbison").click(function() {
       $("#activePlayer").append(mbison);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   };
-
   if (game.playerSelected === true && game.enemySelected === false && this.isPlayer !== true) {
       mbison.isEnemy = true;
       game.currentEnemy = mbison;
@@ -371,12 +307,17 @@ $("#mbison").click(function() {
       console.log("The current enemy @ end is: " + game.currentEnemy.name);
       console.log("The current player @ end is: " + game.currentPlayer.name);
   }
-
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("mbison player status: " + mbison.isPlayer);
   console.log("mbison enemy status: " + mbison.isEnemy);
+
 });
+
+
+
+
+
 
 
 </script>
