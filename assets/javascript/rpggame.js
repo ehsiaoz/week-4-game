@@ -334,7 +334,7 @@ var game = {
       game.currentPlayer.attackPoints = game.currentPlayer.attackPoints + game.currentPlayer.attackPointsInc 
 
       $( "#playerStatus" ).html("You attacked " + game.activeEnemy.name + " for " + game.currentPlayer.attackPoints + " damage.");
-      $( "#enemyStatus" ).html(game.activeEnemy.name + "HP: " + game.activeEnemy.healthPoints);
+      $( "#enemyStatus" ).html(game.activeEnemy.name + " attacked you back for " + game.activeEnemy.attackPoints + " damage.");
       console.log("This is the player's hp: " + game.currentPlayer.healthPoints);
       console.log("This is the enemy's hp: " + game.activeEnemy.healthPoints);
       console.log("This is the player's new ap: " + game.currentPlayer.attackPoints);

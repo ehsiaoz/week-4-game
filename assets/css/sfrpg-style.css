@@ -133,7 +133,7 @@
     /*style for message box to player*/
     #gameMessage {
       height: 130px;
-      width: 30%;
+      width: 300px;
       background-color: white;
       padding: 5px;
     }
