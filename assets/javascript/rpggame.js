@@ -24,9 +24,9 @@ ryu.style.backgroundRepeat = "no-repeat";
 ryu.style.backgroundColor = "white";
 ryu.style.backgroundPosition = "center"; 
 ryu.name = "Ryu";
-ryu.healthPoints = 100;
-ryu.attackPoints = 10;
-ryu.attackPointsInc = 15;
+ryu.healthPoints = 120;
+ryu.attackPoints = 8;
+ryu.attackPointsInc = 8;
 ryu.isPlayer = null;
 ryu.isEnemy = null;
 console.log(ryu);
@@ -45,9 +45,9 @@ ken.style.backgroundRepeat = "no-repeat";
 ken.style.backgroundColor = "white";
 ken.style.backgroundPosition = "center"; 
 ken.name = "Ken";
-ken.healthPoints = 125;
-ken.attackPoints = 40;
-ken.attackPointsInc = 5;
+ken.healthPoints = 100;
+ken.attackPoints = 5;
+ken.attackPointsInc = 10;
 ken.isPlayer = null;
 ken.isEnemy = null;
 console.log(ken);
@@ -66,9 +66,9 @@ sagat.style.backgroundRepeat = "no-repeat";
 sagat.style.backgroundColor = "white";
 sagat.style.backgroundPosition = "center"; 
 sagat.name = "Sagat";
-sagat.healthPoints = 180;
-sagat.attackPoints = 25;
-sagat.attackPointsInc = 10;
+sagat.healthPoints = 150;
+sagat.attackPoints = 20;
+sagat.attackPointsInc = 5;
 sagat.isPlayer = null;
 sagat.isEnemy = null;
 console.log(sagat);
@@ -84,9 +84,9 @@ mbison.style.backgroundImage = "url('assets/images/mbison.png')";
 mbison.style.backgroundSize = "cover";
 mbison.style.backgroundPosition = "center"; 
 mbison.name = "M. Bison";
-mbison.healthPoints = 200;
-mbison.attackPoints = 30;
-mbison.attackPointsInc = 10;
+mbison.healthPoints = 180;
+mbison.attackPoints = 25;
+mbison.attackPointsInc = 5;
 mbison.isPlayer = null;
 mbison.isEnemy = null;
 console.log(mbison);
@@ -111,7 +111,7 @@ var game = {
 
       //game button display settings
       $("#attack").attr("style", "visibility: hidden");
-      $("#newGame").attr("style", "visibility: visible");
+      $("#newGame").attr("style", "visibility: hidden");
 
       //default start settings
       game.playerSelected = false;
@@ -122,6 +122,7 @@ var game = {
       game.currentPlayer = null;
       game.activeEnemy = null;
 
+      $( "#instructionMsg" ).html("Select a player character");
       console.log("This is the array of available characters: " +  game.availableCharacters);
   },
 
@@ -144,6 +145,7 @@ var game = {
 
       });
 
+      $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
@@ -158,7 +160,7 @@ var game = {
         $("#attack").attr("style", "visibility: visible");
 
 
-        $( "#enemyStatus" ).html("Enemy HP: " + game.activeEnemy.healthPoints);
+        $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
         $.each( game.availableCharacters, function(i, val) {
@@ -187,6 +189,8 @@ var game = {
       game.currentPlayer = ken;
       $("#activePlayer").append(ken);
 
+      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
           if (val === game.currentPlayer.id) {
@@ -195,6 +199,7 @@ var game = {
 
       });
 
+      $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
@@ -207,6 +212,9 @@ var game = {
         game.enemySelected = true;
         $("#activeEnemy").append(ken);
         $("#attack").attr("style", "visibility: visible");
+
+
+        $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
         $.each( game.availableCharacters, function(i, val) {
@@ -235,6 +243,8 @@ var game = {
       game.currentPlayer = sagat;
       $("#activePlayer").append(sagat);
 
+      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
           if (val === game.currentPlayer.id) {
@@ -243,6 +253,7 @@ var game = {
 
       });
 
+      $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
@@ -255,6 +266,9 @@ var game = {
         game.enemySelected = true;
         $("#activeEnemy").append(sagat);
         $("#attack").attr("style", "visibility: visible");
+
+
+        $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
         $.each( game.availableCharacters, function(i, val) {
@@ -283,6 +297,8 @@ var game = {
       game.currentPlayer = mbison;
       $("#activePlayer").append(mbison);
 
+      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
           if (val === game.currentPlayer.id) {
@@ -291,6 +307,7 @@ var game = {
 
       });
 
+      $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
       console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
 
@@ -303,6 +320,9 @@ var game = {
         game.enemySelected = true;
         $("#activeEnemy").append(mbison);
         $("#attack").attr("style", "visibility: visible");
+
+
+        $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
         $.each( game.availableCharacters, function(i, val) {
@@ -341,7 +361,6 @@ var game = {
 
         //if enemy hp is less than or equal to 0 player wins
         if (game.activeEnemy.healthPoints <= 0) {
-          $( "#gameMessage" ).html("You win this round");
 
           //hide the attack button
           $("#attack").attr("style", "visibility: hidden");
@@ -354,25 +373,24 @@ var game = {
 
               game.enemySelected = false;
               
-              
-              
-             
-
-
-
-              $( "#gameMessage" ).html("Select next opponent");
+            
+              $( "#instructionMsg" ).html("You defeated " + game.activeEnemy.name + ". Select your next opponent.");
             };
 
             //if no more opponents left then player wins the game
             if (game.availableCharacters.length <= 0) {
-              $( "#gameMessage" ).html("Congrats! You win!");
+
+              $( "#instructionMsg" ).html("Congrats! You win!");
+                
+              //reveal the 'new game' button
+              $("#newGame").attr("style", "visibility: visible");
             };
 
         };
                    
         //if player hp is less or equal to zero and the enemy still has hp then player loses
         if (game.currentPlayer.healthPoints <=0 && game.activeEnemy.healthPoints > 0) {
-            $( "#gameMessage" ).html("You lose. Try again");
+            $( "#instructionMsg" ).html("You lose. Try again");
             $("#newGame").attr("style", "visibility: visible");
         };
       },

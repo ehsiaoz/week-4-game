@@ -54,7 +54,38 @@
       z-index: 99;
     }
 
+    #instructions {
 
+      height: 100px;
+      width: 30%;
+      border: 2px solid yellow;
+      position: fixed;
+      bottom: 450px;
+      left: 5%;
+      padding: 10px;
+    }
+
+    #instructionMsg {
+      color: orangered;
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+    }
+
+
+    #newGameCol {
+      text-align: center;
+    }
+
+    /*style for new game button*/
+    #newGame {
+      border-radius: 8px;
+      color: white;
+      background-color: orangered;
+    }
+
+
+      
     /*style for empty div containing the selectd player and enemy*/
     #fightArea {
       position: fixed;
@@ -146,19 +177,8 @@
       text-align: left;
     }
 
-    /*style for div containing new game button*/
-    #newGameCol {
-      padding-top: 50px;
-    }
 
-    /*style for new game button*/
-    #newGame {
-      border-radius: 8px;
-      color: white;
-      background-color: orangered;
-    }
-
-
+    
 
 
     /*.background {
