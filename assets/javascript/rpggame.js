@@ -121,11 +121,36 @@ var game = {
       game.playerList = [],
       game.currentPlayer = null;
       game.activeEnemy = null;
+      game.restartFighters(),
 
       $( "#instructionMsg" ).html("Select a player character");
       console.log("This is the array of available characters: " +  game.availableCharacters);
   },
 
+  restartFighters: function() {
+
+      ryu.healthPoints = 120;
+      ryu.attackPoints = 8;
+      ryu.attackPointsInc = 8;
+      ryu.isPlayer = null;
+      ryu.isEnemy = null;   
+      ken.healthPoints = 100;
+      ken.attackPoints = 5;
+      ken.attackPointsInc = 10;
+      ken.isPlayer = null;
+      ken.isEnemy = null;
+      sagat.healthPoints = 150;
+      sagat.attackPoints = 20;
+      sagat.attackPointsInc = 5;
+      sagat.isPlayer = null;
+      sagat.isEnemy = null;
+      mbison.healthPoints = 180;
+      mbison.attackPoints = 25;
+      mbison.attackPointsInc = 5;
+      mbison.isPlayer = null;
+      mbison.isEnemy = null;
+
+  },
 
   selectRyu: function() {
 
@@ -384,6 +409,11 @@ var game = {
                 
               //reveal the 'new game' button
               $("#newGame").attr("style", "visibility: visible");
+
+              //clear the msg box
+              $( "#playerStatus" ).html("");
+              $( "#enemyStatus" ).html("");
+
             };
 
         };
@@ -392,6 +422,8 @@ var game = {
         if (game.currentPlayer.healthPoints <=0 && game.activeEnemy.healthPoints > 0) {
             $( "#instructionMsg" ).html("You lose. Try again");
             $("#newGame").attr("style", "visibility: visible");
+            $( "#playerStatus" ).html("");
+            $( "#enemyStatus" ).html("");
         };
       },
 };
