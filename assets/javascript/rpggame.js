@@ -112,15 +112,23 @@ var game = {
       //game button display settings
       $("#attack").attr("style", "visibility: hidden");
       $("#newGame").attr("style", "visibility: hidden");
+      $("#enemyHP").attr("style", "visibility: hidden");
+      $("#playerHP").attr("style", "visibility: hidden");
 
       //default start settings
       game.playerSelected = false;
+      console.log("This is game.playerSelected on start = false: " + game.playerSelected);
       game.enemySelected = false;
+      console.log("This is game.enemySelected on start = false: " + game.enemySelected );
       game.availableCharacters = ["ryu", "ken", "sagat", "mbison"];
+      console.log("This is game.availableCharacters at start" + game.availableCharacters);
       game.enemyList = [],
+      console.log("This is game.enemyList at start: " + game.enemyList);
       game.playerList = [],
       game.currentPlayer = null;
+      console.log("This is game.currentPlayer at start should be null: " + game.currentPlayer);
       game.activeEnemy = null;
+      console.log("This is game.activeEnemy at start should be null: " + game.activeEnemy);
       game.restartFighters(),
 
       $( "#instructionMsg" ).html("Select a player character");
@@ -130,10 +138,13 @@ var game = {
   restartFighters: function() {
 
       ryu.healthPoints = 120;
+      console.log("This is ryu.healthPoints at start: " + ryu.healthPoints);
       ryu.attackPoints = 8;
       ryu.attackPointsInc = 8;
       ryu.isPlayer = null;
+      console.log("This is ryu.isPlayer at start: " + ryu.isPlayer);
       ryu.isEnemy = null;   
+      console.log("This is ryu.isEnemy at start: " + ryu.isEnemy);
       ken.healthPoints = 100;
       ken.attackPoints = 5;
       ken.attackPointsInc = 10;
@@ -149,6 +160,7 @@ var game = {
       mbison.attackPointsInc = 5;
       mbison.isPlayer = null;
       mbison.isEnemy = null;
+      
 
   },
 
@@ -159,8 +171,8 @@ var game = {
       ryu.isPlayer = true;
       game.currentPlayer = ryu;
       $("#activePlayer").append(ryu);
-
-      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+       $("#playerHP").attr("style", "visibility: visible");
+      $( "#playerHP" ).html(game.currentPlayer.healthPoints);
 
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
@@ -172,7 +184,8 @@ var game = {
 
       $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
+      console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+      
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -184,7 +197,8 @@ var game = {
         $("#activeEnemy").append(ryu);
         $("#attack").attr("style", "visibility: visible");
 
-
+        $("#enemyHP").attr("style", "visibility: visible");
+        $( "#enemyHP" ).html(game.activeEnemy.healthPoints);
         $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
@@ -199,6 +213,8 @@ var game = {
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
 
+  console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+  console.log("this is game.activeEnemy.healthPoints at start: " + game.activeEnemy.healthPoints);
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("ryu player status: " + ryu.isPlayer);
@@ -213,8 +229,8 @@ var game = {
       ken.isPlayer = true;
       game.currentPlayer = ken;
       $("#activePlayer").append(ken);
-
-      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+       $("#playerHP").attr("style", "visibility: visible");
+      $( "#playerHP" ).html(game.currentPlayer.healthPoints);
 
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
@@ -226,7 +242,8 @@ var game = {
 
       $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
+      console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+      
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -238,7 +255,8 @@ var game = {
         $("#activeEnemy").append(ken);
         $("#attack").attr("style", "visibility: visible");
 
-
+        $("#enemyHP").attr("style", "visibility: visible");
+        $( "#enemyHP" ).html(game.activeEnemy.healthPoints);
         $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
@@ -253,6 +271,8 @@ var game = {
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
 
+  console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+  console.log("this is game.activeEnemy.healthPoints at start: " + game.activeEnemy.healthPoints);
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("ken player status: " + ken.isPlayer);
@@ -267,8 +287,8 @@ var game = {
       sagat.isPlayer = true;
       game.currentPlayer = sagat;
       $("#activePlayer").append(sagat);
-
-      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+       $("#playerHP").attr("style", "visibility: visible");
+      $( "#playerHP" ).html(game.currentPlayer.healthPoints);
 
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
@@ -280,7 +300,8 @@ var game = {
 
       $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
+      console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+      
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -292,7 +313,8 @@ var game = {
         $("#activeEnemy").append(sagat);
         $("#attack").attr("style", "visibility: visible");
 
-
+        $("#enemyHP").attr("style", "visibility: visible");
+        $( "#enemyHP" ).html(game.activeEnemy.healthPoints);
         $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
@@ -307,6 +329,8 @@ var game = {
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
 
+  console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+  console.log("this is game.activeEnemy.healthPoints at start: " + game.activeEnemy.healthPoints);
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("sagat player status: " + sagat.isPlayer);
@@ -321,8 +345,8 @@ var game = {
       mbison.isPlayer = true;
       game.currentPlayer = mbison;
       $("#activePlayer").append(mbison);
-
-      $( "#playerStatus" ).html("Player HP: " + game.currentPlayer.healthPoints);
+       $("#playerHP").attr("style", "visibility: visible");
+      $( "#playerHP" ).html(game.currentPlayer.healthPoints);
 
       //removes the selected character from the available characters array
       $.each( game.availableCharacters, function(i, val) {
@@ -334,7 +358,8 @@ var game = {
 
       $( "#instructionMsg" ).html("Select an enemy character");
       console.log("This is the updated array of available characters: " +  game.availableCharacters);
-      console.log("This is the selected players hp: " +  game.currentPlayer.healthPoints);
+      console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+      
 
       console.log("The current player @ end is: " + game.currentPlayer.name);
     };
@@ -346,7 +371,8 @@ var game = {
         $("#activeEnemy").append(mbison);
         $("#attack").attr("style", "visibility: visible");
 
-
+        $("#enemyHP").attr("style", "visibility: visible");
+        $( "#enemyHP" ).html(game.activeEnemy.healthPoints);
         $( "#instructionMsg" ).html("");
 
         //removes the selected character from the available characters array
@@ -361,6 +387,8 @@ var game = {
         console.log("The current enemy @ end is: " + game.activeEnemy.name);
     }
 
+  console.log("this is game.currentPlayer.healthPoints at start: " + game.currentPlayer.healthPoints);
+  console.log("this is game.activeEnemy.healthPoints at start: " + game.activeEnemy.healthPoints);
   console.log("A player has been selected " + game.playerSelected);
   console.log("An enemy has been selected " + game.enemySelected);
   console.log("mbison player status: " + mbison.isPlayer);
@@ -380,6 +408,8 @@ var game = {
 
       $( "#playerStatus" ).html("You attacked " + game.activeEnemy.name + " for " + game.currentPlayer.attackPoints + " damage.");
       $( "#enemyStatus" ).html(game.activeEnemy.name + " attacked you back for " + game.activeEnemy.attackPoints + " damage.");
+      $( "#playerHP" ).html(game.currentPlayer.healthPoints);
+      $( "#enemyHP" ).html(game.activeEnemy.healthPoints);
       console.log("This is the player's hp: " + game.currentPlayer.healthPoints);
       console.log("This is the enemy's hp: " + game.activeEnemy.healthPoints);
       console.log("This is the player's new ap: " + game.currentPlayer.attackPoints);
@@ -392,6 +422,7 @@ var game = {
 
           //Clears the losing enemy player button object from the active enemy div
           $( "#activeEnemy" ).empty();
+          $("#enemyHP").attr("style", "visibility: hidden");
         
                //check available characters array to see if there are any more opponents left
             if (game.availableCharacters.length > 0) { 
@@ -401,10 +432,11 @@ var game = {
             
               $( "#instructionMsg" ).html("You defeated " + game.activeEnemy.name + ". Select your next opponent.");
             };
-
+            console.log("This is the lenght of availcharacters array: " + game.availableCharacters.length);
             //if no more opponents left then player wins the game
             if (game.availableCharacters.length <= 0) {
 
+                console.log("This is the lenght of availcharacters array: " + game.availableCharacters.length);
               $( "#instructionMsg" ).html("Congrats! You win!");
                 
               //reveal the 'new game' button
